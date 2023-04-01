@@ -1,10 +1,13 @@
 const canvas = document.querySelector('canvas')
+//2d version of  API context
 const c = canvas.getContext('2d')
 
 canvas.width = 1024
 canvas.height = 576
 
 const collisionsMap = []
+// map size is 70 tiles wide
+// extracts all collisions into individual rows:
 for (let i = 0; i < collisions.length; i += 70) {
   collisionsMap.push(collisions.slice(i, 70 + i))
 }
@@ -18,7 +21,7 @@ const charactersMap = []
 for (let i = 0; i < charactersMapData.length; i += 70) {
   charactersMap.push(charactersMapData.slice(i, 70 + i))
 }
-console.log(charactersMap)
+console.log('charactersMap is: ', charactersMap)
 
 const boundaries = []
 const offset = {
@@ -26,12 +29,14 @@ const offset = {
   y: -650
 }
 
+// captures all collision square coords:
 collisionsMap.forEach((row, i) => {
-  row.forEach((symbol, j) => {
-    if (symbol === 1025)
+  row.forEach((boundaryNum, j) => {
+    if (boundaryNum === 1025)
       boundaries.push(
         new Boundary({
           position: {
+            //uses static props in Boundary Class:
             x: j * Boundary.width + offset.x,
             y: i * Boundary.height + offset.y
           }
@@ -42,9 +47,10 @@ collisionsMap.forEach((row, i) => {
 
 const battleZones = []
 
+// captures all battle square coords:
 battleZonesMap.forEach((row, i) => {
-  row.forEach((symbol, j) => {
-    if (symbol === 1025)
+  row.forEach((battleSquare, j) => {
+    if (battleSquare === 1025)
       battleZones.push(
         new Boundary({
           position: {
@@ -117,22 +123,22 @@ charactersMap.forEach((row, i) => {
 })
 
 const image = new Image()
-image.src = './img/Pellet Town.png'
+image.src = './img/game-map.png'
 
 const foregroundImage = new Image()
 foregroundImage.src = './img/foregroundObjects.png'
 
 const playerDownImage = new Image()
-playerDownImage.src = './img/playerDown.png'
+playerDownImage.src = './img/player/playerDown.png'
 
 const playerUpImage = new Image()
-playerUpImage.src = './img/playerUp.png'
+playerUpImage.src = './img/player/playerUp.png'
 
 const playerLeftImage = new Image()
-playerLeftImage.src = './img/playerLeft.png'
+playerLeftImage.src = './img/player/playerLeft.png'
 
 const playerRightImage = new Image()
-playerRightImage.src = './img/playerRight.png'
+playerRightImage.src = './img/player/playerRight.png'
 
 const player = new Sprite({
   position: {
@@ -158,6 +164,7 @@ const background = new Sprite({
     y: offset.y
   },
   image: image
+  // scale: 4
 })
 
 const foreground = new Sprite({
@@ -168,6 +175,7 @@ const foreground = new Sprite({
   image: foregroundImage
 })
 
+// keys obj created to help listen for when keys are pressed
 const keys = {
   w: {
     pressed: false
@@ -190,6 +198,8 @@ const movables = [
   ...battleZones,
   ...characters
 ]
+
+// boundaries drawn after background, but before player
 const renderables = [
   background,
   ...boundaries,
@@ -204,9 +214,10 @@ const battle = {
 }
 
 function animate() {
+  // calls animate recursively
   const animationId = window.requestAnimationFrame(animate)
-  renderables.forEach((renderable) => {
-    renderable.draw()
+  renderables.forEach((item) => {
+    item.draw()
   })
 
   let moving = true
@@ -409,6 +420,7 @@ function animate() {
 
 let lastKey = ''
 window.addEventListener('keydown', (e) => {
+  console.log(`key pressed is: ${e.key}`)
   if (player.isInteracting) {
     switch (e.key) {
       case ' ':
@@ -460,6 +472,7 @@ window.addEventListener('keydown', (e) => {
       lastKey = 'd'
       break
   }
+  console.log(keys)
 })
 
 window.addEventListener('keyup', (e) => {
@@ -477,6 +490,7 @@ window.addEventListener('keyup', (e) => {
       keys.d.pressed = false
       break
   }
+  console.log(keys)
 })
 
 let clicked = false
@@ -484,5 +498,11 @@ addEventListener('click', () => {
   if (!clicked) {
     audio.Map.play()
     clicked = true
+
+    // addEventListener('onended', () => {
+    //   setTimeout(() => {
+    //     audio.Map.play()
+    //   }, 5000)
+    // })
   }
 })

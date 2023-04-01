@@ -21,7 +21,7 @@ const monsters = {
       y: 100
     },
     image: {
-      src: './img/draggleSprite.png'
+      src: './img/enemies/draggleSprite.png'
     },
     frames: {
       max: 4,

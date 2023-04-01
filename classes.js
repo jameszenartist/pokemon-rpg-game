@@ -15,6 +15,8 @@ class Sprite {
     this.image.onload = () => {
       this.width = (this.image.width / this.frames.max) * scale
       this.height = this.image.height * scale
+      // added to make it pixelated:
+      c.imageSmoothingEnabled = false
     }
     this.image.src = image.src
 
@@ -227,6 +229,8 @@ class Monster extends Sprite {
   }
 }
 
+// as map increased 400%, instead of 12 * 12
+// boundary, ea. one is 48 *48:
 class Boundary {
   static width = 48
   static height = 48
@@ -237,6 +241,7 @@ class Boundary {
   }
 
   draw() {
+    // boundary square will be this color:
     c.fillStyle = 'rgba(255, 0, 0, 0)'
     c.fillRect(this.position.x, this.position.y, this.width, this.height)
   }
