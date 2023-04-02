@@ -2,7 +2,13 @@ const audio = {
   Map: new Howl({
     src: './audio/map.wav',
     html5: true,
-    volume: 0.1
+    volume: 0.1,
+
+    onend: function () {
+      setTimeout(function () {
+        audio.Map.play()
+      }, 5000)
+    }
   }),
   initBattle: new Howl({
     src: './audio/initBattle.wav',

@@ -5,29 +5,7 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
-const collisionsMap = []
-// map size is 70 tiles wide
-// extracts all collisions into individual rows:
-for (let i = 0; i < collisions.length; i += 70) {
-  collisionsMap.push(collisions.slice(i, 70 + i))
-}
-
-const battleZonesMap = []
-for (let i = 0; i < battleZonesData.length; i += 70) {
-  battleZonesMap.push(battleZonesData.slice(i, 70 + i))
-}
-
-const charactersMap = []
-for (let i = 0; i < charactersMapData.length; i += 70) {
-  charactersMap.push(charactersMapData.slice(i, 70 + i))
-}
-console.log('charactersMap is: ', charactersMap)
-
-const boundaries = []
-const offset = {
-  x: -735,
-  y: -650
-}
+// console.log('charactersMap is: ', charactersMap)
 
 // captures all collision square coords:
 collisionsMap.forEach((row, i) => {
@@ -45,8 +23,6 @@ collisionsMap.forEach((row, i) => {
   })
 })
 
-const battleZones = []
-
 // captures all battle square coords:
 battleZonesMap.forEach((row, i) => {
   row.forEach((battleSquare, j) => {
@@ -61,13 +37,6 @@ battleZonesMap.forEach((row, i) => {
       )
   })
 })
-
-const characters = []
-const villagerImg = new Image()
-villagerImg.src = './img/villager/Idle.png'
-
-const oldManImg = new Image()
-oldManImg.src = './img/oldMan/Idle.png'
 
 charactersMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
@@ -122,24 +91,6 @@ charactersMap.forEach((row, i) => {
   })
 })
 
-const image = new Image()
-image.src = './img/game-map.png'
-
-const foregroundImage = new Image()
-foregroundImage.src = './img/foregroundObjects.png'
-
-const playerDownImage = new Image()
-playerDownImage.src = './img/player/playerDown.png'
-
-const playerUpImage = new Image()
-playerUpImage.src = './img/player/playerUp.png'
-
-const playerLeftImage = new Image()
-playerLeftImage.src = './img/player/playerLeft.png'
-
-const playerRightImage = new Image()
-playerRightImage.src = './img/player/playerRight.png'
-
 const player = new Sprite({
   position: {
     x: canvas.width / 2 - 192 / 4 / 2,
@@ -175,22 +126,6 @@ const foreground = new Sprite({
   image: foregroundImage
 })
 
-// keys obj created to help listen for when keys are pressed
-const keys = {
-  w: {
-    pressed: false
-  },
-  a: {
-    pressed: false
-  },
-  s: {
-    pressed: false
-  },
-  d: {
-    pressed: false
-  }
-}
-
 const movables = [
   background,
   ...boundaries,
@@ -208,10 +143,6 @@ const renderables = [
   player,
   foreground
 ]
-
-const battle = {
-  initiated: false
-}
 
 function animate() {
   // calls animate recursively
@@ -498,11 +429,5 @@ addEventListener('click', () => {
   if (!clicked) {
     audio.Map.play()
     clicked = true
-
-    // addEventListener('onended', () => {
-    //   setTimeout(() => {
-    //     audio.Map.play()
-    //   }, 5000)
-    // })
   }
 })
