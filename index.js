@@ -1,3 +1,14 @@
+// import './data/audio.js'
+// import './data/battleZones.js'
+// import './data/collisions.js'
+// import './data/attacks.js'
+// import './data/monsters.js'
+// import './data/characters.js'
+// import './data/mapObjects.js'
+// import './data/imagePieces.js'
+// import './js/utils.js'
+// import './classes/classes.js'
+
 const canvas = document.querySelector('canvas')
 //2d version of  API context
 const c = canvas.getContext('2d')
@@ -114,8 +125,8 @@ const background = new Sprite({
     x: offset.x,
     y: offset.y
   },
-  image: image
-  // scale: 4
+  image: image,
+  scale: 4
 })
 
 const foreground = new Sprite({
@@ -223,6 +234,8 @@ function animate() {
       characterOffset: { x: 0, y: 3 }
     })
 
+    // checks for every boundary.
+    // If player crosses boundary, breaks out of loop
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i]
       if (
@@ -256,6 +269,8 @@ function animate() {
       characterOffset: { x: 3, y: 0 }
     })
 
+    // checks for every boundary.
+    // If player crosses boundary, breaks out of loop
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i]
       if (
@@ -289,6 +304,8 @@ function animate() {
       characterOffset: { x: 0, y: -3 }
     })
 
+    // checks for every boundary.
+    // If player crosses boundary, breaks out of loop
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i]
       if (
@@ -322,6 +339,8 @@ function animate() {
       characterOffset: { x: -3, y: 0 }
     })
 
+    // checks for every boundary.
+    // If player crosses boundary, breaks out of loop
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i]
       if (
@@ -403,7 +422,7 @@ window.addEventListener('keydown', (e) => {
       lastKey = 'd'
       break
   }
-  console.log(keys)
+  // console.log(keys)
 })
 
 window.addEventListener('keyup', (e) => {
@@ -421,13 +440,13 @@ window.addEventListener('keyup', (e) => {
       keys.d.pressed = false
       break
   }
-  console.log(keys)
+  // console.log(keys)
 })
 
 let clicked = false
 addEventListener('click', () => {
   if (!clicked) {
-    audio.Map.play()
+    // audio.Map.play()
     clicked = true
   }
 })

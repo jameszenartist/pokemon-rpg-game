@@ -5,7 +5,7 @@ const oldManImg = new Image()
 oldManImg.src = './img/oldMan/Idle.png'
 
 const image = new Image()
-image.src = './img/game-map.png'
+image.src = './img/smaller-map.png'
 
 const foregroundImage = new Image()
 foregroundImage.src = './img/foregroundObjects.png'
