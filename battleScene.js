@@ -1,3 +1,5 @@
+import { audio } from './data/audio.js'
+
 import { Sprite, Monster, Boundary, Character } from './classes/classes.js'
 import { animate } from './index.js'
 

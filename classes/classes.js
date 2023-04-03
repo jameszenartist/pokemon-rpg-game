@@ -1,3 +1,4 @@
+import { audio } from '../data/audio.js'
 import { c } from '../index.js'
 
 class Sprite {
