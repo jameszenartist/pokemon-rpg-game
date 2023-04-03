@@ -385,7 +385,7 @@ function animate() {
 
 let lastKey = ''
 window.addEventListener('keydown', (e) => {
-  console.log(`key pressed is: ${e.key}`)
+  // console.log(`key pressed is: ${e.key}`)
   if (player.isInteracting) {
     switch (e.key) {
       case ' ':
@@ -459,7 +459,7 @@ window.addEventListener('keyup', (e) => {
 })
 
 let clicked = false
-addEventListener('click', () => {
+window.addEventListener('click', () => {
   if (!clicked) {
     audio.Map.play()
     clicked = true
