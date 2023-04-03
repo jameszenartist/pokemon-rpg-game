@@ -459,7 +459,7 @@ window.addEventListener('keyup', (e) => {
 })
 
 let clicked = false
-window.addEventListener('click', () => {
+addEventListener('click', () => {
   if (!clicked) {
     audio.Map.play()
     clicked = true
