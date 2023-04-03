@@ -1,3 +1,7 @@
+import { collisions } from './collisions.js'
+import { battleZonesData } from './battleZones.js'
+import { charactersMapData } from './characters.js'
+
 const collisionsMap = []
 // map size is 70 tiles wide
 // extracts all collisions into individual rows:
@@ -42,4 +46,16 @@ const keys = {
 
 const battle = {
   initiated: false
+}
+
+export {
+  collisionsMap,
+  battleZonesMap,
+  charactersMap,
+  boundaries,
+  offset,
+  battleZones,
+  characters,
+  keys,
+  battle
 }

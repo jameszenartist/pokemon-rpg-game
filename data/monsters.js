@@ -1,3 +1,5 @@
+import { attacks } from './attacks.js'
+
 const monsters = {
   Emby: {
     position: {
@@ -33,3 +35,5 @@ const monsters = {
     attacks: [attacks.Tackle, attacks.Fireball]
   }
 }
+
+export { monsters }

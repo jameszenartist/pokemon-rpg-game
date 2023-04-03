@@ -1,13 +1,28 @@
-// import './data/audio.js'
-// import './data/battleZones.js'
-// import './data/collisions.js'
-// import './data/attacks.js'
-// import './data/monsters.js'
-// import './data/characters.js'
-// import './data/mapObjects.js'
-// import './data/imagePieces.js'
-// import './js/utils.js'
-// import './classes/classes.js'
+import { audio } from './data/audio.js'
+import './data/monsters.js'
+import {
+  collisionsMap,
+  battleZonesMap,
+  charactersMap,
+  boundaries,
+  offset,
+  battleZones,
+  characters,
+  keys,
+  battle
+} from './data/mapObjects.js'
+import {
+  villagerImg,
+  oldManImg,
+  image,
+  foregroundImage,
+  playerDownImage,
+  playerUpImage,
+  playerLeftImage,
+  playerRightImage
+} from './data/imagePieces.js'
+import { rectangularCollision, checkForCharacterCollision } from './js/utils.js'
+import { Sprite, Monster, Boundary, Character } from './classes/classes.js'
 
 const canvas = document.querySelector('canvas')
 //2d version of  API context
@@ -446,7 +461,9 @@ window.addEventListener('keyup', (e) => {
 let clicked = false
 addEventListener('click', () => {
   if (!clicked) {
-    // audio.Map.play()
+    audio.Map.play()
     clicked = true
   }
 })
+
+export { animate, c }

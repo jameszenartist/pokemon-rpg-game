@@ -41,3 +41,5 @@ const audio = {
     volume: 0.1
   })
 }
+
+export { audio }

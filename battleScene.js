@@ -1,3 +1,6 @@
+import { Sprite, Monster, Boundary, Character } from './classes/classes.js'
+import { animate } from './index.js'
+
 const battleBackgroundImage = new Image()
 battleBackgroundImage.src = './img/battleBackground.png'
 const battleBackground = new Sprite({

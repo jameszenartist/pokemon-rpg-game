@@ -12,3 +12,5 @@ const attacks = {
     color: 'red'
   }
 }
+
+export { attacks }

@@ -34,3 +34,5 @@ function checkForCharacterCollision({
     }
   }
 }
+
+export { rectangularCollision, checkForCharacterCollision }

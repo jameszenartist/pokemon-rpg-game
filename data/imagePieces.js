@@ -21,3 +21,14 @@ playerLeftImage.src = './img/player/playerLeft.png'
 
 const playerRightImage = new Image()
 playerRightImage.src = './img/player/playerRight.png'
+
+export {
+  villagerImg,
+  oldManImg,
+  image,
+  foregroundImage,
+  playerDownImage,
+  playerUpImage,
+  playerLeftImage,
+  playerRightImage
+}

@@ -1,3 +1,5 @@
+import { c } from '../index.js'
+
 class Sprite {
   constructor({
     position,
@@ -274,3 +276,5 @@ class Character extends Sprite {
     this.dialogueIndex = 0
   }
 }
+
+export { Sprite, Monster, Boundary, Character }
