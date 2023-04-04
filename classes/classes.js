@@ -6,7 +6,7 @@ class Sprite {
     position,
     velocity,
     image,
-    frames = { max: 1, hold: 10 },
+    frames = { max: 1, hold: 10, randomFacing: false },
     sprites,
     animate = false,
     rotation = 0,
@@ -83,6 +83,10 @@ class Sprite {
     }
 
     if (this.frames.elapsed % this.frames.hold === 0) {
+      //Create random facing direction func here??
+
+      // if randomFacing === true
+      // this.frames.val = Math.floor(Math.random() * this.frames.max
       if (this.frames.val < this.frames.max - 1) this.frames.val++
       else this.frames.val = 0
     }

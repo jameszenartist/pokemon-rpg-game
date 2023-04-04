@@ -27,6 +27,7 @@ button:hover {
 
 .container {
   display: inline-block;
+  /* Now everything inside container will be relative to it */
   position: relative;
 }
 
@@ -38,6 +39,7 @@ button:hover {
   bottom: 0;
   left: 0;
   opacity: 0;
+  /* This ensures this div stays out of way when playing game */
   pointer-events: none;
   z-index: 10;
 }

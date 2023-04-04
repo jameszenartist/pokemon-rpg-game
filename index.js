@@ -1,5 +1,4 @@
 import { audio } from './data/audio.js'
-import './data/monsters.js'
 import {
   collisionsMap,
   battleZonesMap,
@@ -216,7 +215,9 @@ function animate() {
         gsap.to('#overlappingDiv', {
           opacity: 1,
           repeat: 3,
+          // smooths animation
           yoyo: true,
+          // shortens animation
           duration: 0.4,
           onComplete() {
             gsap.to('#overlappingDiv', {
